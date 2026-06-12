@@ -1,5 +1,7 @@
 # METIS-F (Major-asset Estimation Trend Intelligence System - Futures)
 
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![Google Gemini](https://img.shields.io/badge/Google_Gemini-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white)
+
 AI 기반 비트코인 선물 자동매매 시스템. [metis-f](https://github.com/deltaomega02/metis-f)의 운영 개선판 — 멀티 심볼 진단 도구(diagnose_*.py)와 데이터 흐름 점검 스크립트가 추가되어 있다.
 
 ---

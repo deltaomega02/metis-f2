@@ -1,0 +1,51 @@
+# 루트 파일
+mv ./.env ./metis-futures/.env
+mv ./main.py ./metis-futures/main.py
+mv ./dashboard_app.py ./metis-futures/dashboard_app.py
+
+# config/
+mv ./__init__.py ./metis-futures/config/__init__.py
+mv ./settings.py ./metis-futures/config/settings.py
+mv ./logging_config.py ./metis-futures/config/logging_config.py
+
+# core/
+mv ./__init__.py ./metis-futures/core/__init__.py
+mv ./regime_engine.py ./metis-futures/core/regime_engine.py
+mv ./data_fetcher.py ./metis-futures/core/data_fetcher.py
+mv ./trigger_monitor.py ./metis-futures/core/trigger_monitor.py
+mv ./technical_analysis.py ./metis-futures/core/technical_analysis.py
+mv ./websocket_watcher.py ./metis-futures/core/websocket_watcher.py
+mv ./chart_generator.py ./metis-futures/core/chart_generator.py
+mv ./leverage_calculator.py ./metis-futures/core/leverage_calculator.py
+mv ./position_manager.py ./metis-futures/core/position_manager.py
+mv ./scheduler.py ./metis-futures/core/scheduler.py
+
+# ai/
+mv ./__init__.py ./metis-futures/ai/__init__.py
+mv ./gemini_client.py ./metis-futures/ai/gemini_client.py
+mv ./prompts.py ./metis-futures/ai/prompts.py
+
+# exchange/
+mv ./__init__.py ./metis-futures/exchange/__init__.py
+mv ./bybit_client.py ./metis-futures/exchange/bybit_client.py
+mv ./bybit_websocket.py ./metis-futures/exchange/bybit_websocket.py
+
+# database/
+mv ./__init__.py ./metis-futures/database/__init__.py
+mv ./db_manager.py ./metis-futures/database/db_manager.py
+mv ./schema.sql ./metis-futures/database/schema.sql
+
+# utils/
+mv ./__init__.py ./metis-futures/utils/__init__.py
+mv ./telegram_bot.py ./metis-futures/utils/telegram_bot.py
+
+
+
+
+mv ./prompts_ver3.py ./metis-futures/ai/prompts.py
+mv ./settings.py ./metis-futures/config/settings.py
+mv ./leverage_calculator.py ./metis-futures/core/leverage_calculator.py
+mv ./websocket_watcher.py ./metis-futures/core/websocket_watcher.py
+mv ./main.py ./metis-futures/main.py
+mv ./__init__.py ./metis-futures/core/__init__.py
+mv ./telegram_bot.py ./metis-futures/utils/telegram_bot.py

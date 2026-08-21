@@ -25,23 +25,23 @@ AI 기반 비트코인 선물 자동매매 시스템. [metis-f](https://github.c
 
 ### 1.1 소개
 
-METIS-F는 Google Gemini 3.0 Pro Vision을 활용하여 비트코인 선물 시장을 분석하고, 롱/숏 양방향 포지션을 자동으로 운용하는 트레이딩 시스템이다. GCP e2-small (2GB RAM) 환경에서 24시간 무중단 운영을 목표로 설계되었다.
+METIS-F2는 Google Gemini 3.1 Pro (`gemini-3.1-pro-preview`)을 활용하여 암호화폐 선물 시장(BTC·XRP)을 분석하고, 롱/숏 양방향 포지션을 자동으로 운용하는 트레이딩 시스템이다. GCP e2-small (2GB RAM) 환경에서 24시간 무중단 운영을 목표로 설계되었다.
 
 ### 1.2 핵심 특징
 
 | 항목 | 설명 |
 |------|------|
 | 거래소 | Bybit (USDT Perpetual) |
-| 거래 대상 | BTC/USDT 단일 자산 |
+| 거래 대상 | **BTC/USDT + XRP/USDT** (`config/settings.py:47`) |
 | 거래 방향 | 롱(Long) / 숏(Short) 양방향 |
-| 레버리지 | 1x ~ 10x (AI 확신도 기반 동적 결정) |
-| AI 엔진 | Google Gemini 3.0 Pro Vision |
+| 레버리지 | 1x ~ **7x** (AI 확신도 기반 동적 결정, `MAX_LEVERAGE = 7`) |
+| AI 엔진 | Google Gemini 3.1 Pro (`gemini-3.1-pro-preview`) |
 | 분석 주기 | 1시간 타임프레임 기준 |
 | 실시간 감시 | WebSocket + Dead Man's Switch |
 
 ### 1.3 운영 철학
 
-**Single Asset Focus**: BTC 단일 자산에 집중하여 가장 높은 유동성과 분석 데이터 품질 확보
+**멀티 심볼**: BTC 에 XRP 를 더해 두 심볼을 병렬 운용한다. f2 가 존재하는 이유가 이것이고, 함께 들어온 진단 도구(`diagnose_*.py`)로 심볼별 데이터 흐름을 점검한다.
 
 **Bidirectional Thinking**: 상승장과 하락장 모두 수익 기회로 활용
 
@@ -189,7 +189,7 @@ METIS-F는 Google Gemini 3.0 Pro Vision을 활용하여 비트코인 선물 시�
 
 | 확신도 | 레버리지 | 근거 |
 |--------|----------|------|
-| 9~10점 | 10x | 매우 강한 신호 |
+| 9~10점 | 7x | 매우 강한 신호 |
 | 7~8점 | 7x | 강한 신호 |
 | 5~6점 | 5x | 중간 신호 |
 | 3~4점 | 2x | 약한 신호 |
@@ -565,6 +565,8 @@ Private WebSocket에서 포지션 크기가 0으로 변경되는 것을 감지:
 | BYBIT_TESTNET_API_KEY | Bybit Testnet API 키 |
 | BYBIT_TESTNET_SECRET | Bybit Testnet Secret |
 | BYBIT_USE_TESTNET | Testnet 사용 여부 (true/false) |
+
+> ⚠️ 실제로는 `config/settings.py:19` 의 `_USE_TESTNET = False` 가 하드코딩돼 있어 이 환경변수는 무시된다.
 | TELEGRAM_BOT_TOKEN | 텔레그램 봇 토큰 |
 | TELEGRAM_CHAT_ID | 텔레그램 채팅 ID |
 | GEMINI_API_KEY | Google Gemini API 키 |
